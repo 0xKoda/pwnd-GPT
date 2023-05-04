@@ -50,7 +50,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         A juniour developer comes to you with this security issue {{user_request}}
         and they have these tools installed {{cli_tool}}. Help the user respond to the incident
         guiding them through the incident response process, and providing any command line tool
-        terminal commands.
+        terminal commands.  If {{cli_tool}} is none, guide the user through the commands to use any default cli tools that might be useful.
         Your response has to be only the following YAML template:
 
         ```yaml
