@@ -1,6 +1,12 @@
+
+
 # pwnd-GPT
 
 A CLI tool built with Rust that guides users through cybersecurity incident response using GPT-3.5-turbo powered assistance. Simply describe the incident, and recieve an incident response plan along with terminal commands and steps enabling faster incident response campaigns and active defence.
+
+<p align="center">
+  <img src="./c1.png" alt="pwndGPT logo" width="300" />
+</p>
 
 ## Table of Contents
 
