@@ -1,4 +1,4 @@
-# pwndGPT
+# pwnd-GPT
 
 A CLI tool built with Rust that guides users through cybersecurity incident response using GPT-3.5-turbo powered assistance. Simply describe the incident, and recieve an incident response plan along with terminal commands and steps enabling faster incident response campaigns and active defence.
 
@@ -16,6 +16,8 @@ A CLI tool built with Rust that guides users through cybersecurity incident resp
 - Interacts with OpenAI GPT-3.5 for advanced assistance.
 - Identify and clear threats using command line tooling.
 
+*Note: Always check results for accuracy. GPT-4 may be used in due time to improve accuracy.*
+
 ## Installation
 
 1. Ensure you have Rust and Cargo installed on your system. If not, follow the [official installation guide](https://www.rust-lang.org/tools/install).
@@ -23,13 +25,13 @@ A CLI tool built with Rust that guides users through cybersecurity incident resp
 2. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/pwndGPT.git
+git clone https://github.com/0xKoda/pwnd-GPT.git
 ```
 
 3. Change to the project directory:
 
 ```
-cd pwndGPT
+cd pwnd-GPT
 ```
 
 4. Build the project
@@ -41,7 +43,7 @@ cargo build --release
 5. Add compiled binary to path
 
 ```
-export PATH=$PATH:/path/to/pwndGPT/target/release
+export PATH=$PATH:/path/to/pwnd-GPT/target/release
 ```
 
 ## Usage
@@ -53,7 +55,7 @@ export OPENAI_API_KEY="your-api-key-here"
 2. Run the CLI tool:
 
 ```
-pwndGPT
+pwnd-GPT
 ```
 
 Note: Input the issue you are having, if it is a malware infection, input "malware infection".
