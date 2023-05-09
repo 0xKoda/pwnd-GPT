@@ -1,16 +1,18 @@
+
 use std::env;
 use std::io;
 
+use indicatif::{ProgressBar, ProgressStyle};
 use llm_chain::traits::Executor;
 use llm_chain::{executor, parameters, prompt, step::Step};
+use std::time::Duration;
+use tokio::time::sleep;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // ANSI color code for texts
     let green = "\u{001b}[32m";
-
     let blue = "\u{001b}[34m";
-
     // Reset ANSI color code
     let reset = "\u{001b}[0m";
 
@@ -39,7 +41,6 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
 
     loop {
-        
         std::env::var("OPENAI_API_KEY").is_ok();
 
         let exec = executor!()?;
@@ -79,9 +80,19 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             "cli_tool" => cli_tool.trim(),
             "user_request" => user_request.trim()
         );
-        println!("{}", step.format(&params).unwrap());
+
+        let pb = ProgressBar::new_spinner();
+        pb.set_style(
+            ProgressStyle::default_spinner()
+                .tick_chars("⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏")
+                .template("{spinner:.green} Processing..."),
+        );
+        pb.enable_steady_tick(100);
 
         let res = step.run(&params, &exec).await?;
+
+        pb.finish_and_clear();
+
         println!("{}{}{}", green, res, reset);
 
         println!("Do you need more help? (yes/no):");
@@ -93,7 +104,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         if more_help.trim().to_lowercase() != "yes" {
             break;
         }
+   
     }
 
     Ok(())
-}
+    }
